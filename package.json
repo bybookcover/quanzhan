@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "element-ui": "^2.4.5"
+  },
+  "devDependencies": {
+    "vue-cli-plugin-element": "~1.0.1"
+  }
+}
