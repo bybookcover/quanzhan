@@ -6,7 +6,7 @@ const app = express()
 app.use(require('cors')())
 // 解析 body
 app.use(express.json())
-
+app.use('/uploads',express.static(__dirname+'/uploads'))
 
 require('./plugins/db')(app)
 require('./routes/admin/index.js')(app)
