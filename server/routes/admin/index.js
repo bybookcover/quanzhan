@@ -46,6 +46,19 @@ module.exports = app =>{
     })
 
     app.post('/admin/api/login',async(req,res) =>{
-        res.send('ok')
+        const{username,password} = req.body
+        const AdminUser = require('../../models/AdminUser')
+        const user = await AdminUser.findOne({username}).select('+password')
+        if(!user){
+            return res.status(422).send({
+                message:'用户不存在'
+            })
+        }
+        const isValid = require('bcrypt').compareSync(password,user.password)
+        if(!isValid){
+            return res.status(422).send({
+                message:'密码错误'
+            })
+        }
     })
 }
