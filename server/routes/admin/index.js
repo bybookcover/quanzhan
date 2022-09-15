@@ -1,5 +1,8 @@
 module.exports = app =>{
     const express = require('express')
+    const jwt = require('jsonwebtoken')
+    const assert = require('assert')
+    const AdminUser = require('../../models/AdminUser')
     const router = express.Router({
         mergeParams:true
     })
@@ -18,7 +21,12 @@ module.exports = app =>{
             success: true
         })
     })  
-    router.get('/', async(req,res)=>{
+    router.get('/', async(req,res,next)=>{
+        const token = String(req.headers.authorization || '').split(' ').pop()
+        const { id } = jwt.verify(token, app.get('secret'))
+        req.user = await AdminUser.findById(id)
+        await next ()
+    },async(req,res)=>{
         const queryOptions = {}
         if(req.Model.modelName === 'Category'){
             queryOptions.populate = 'parent'
@@ -47,7 +55,6 @@ module.exports = app =>{
 
     app.post('/admin/api/login',async(req,res) =>{
         const{username,password} = req.body
-        const AdminUser = require('../../models/AdminUser')
         const user = await AdminUser.findOne({username}).select('+password')
         if(!user){
             return res.status(422).send({
@@ -60,5 +67,9 @@ module.exports = app =>{
                 message:'密码错误'
             })
         }
+
+        
+        token = jwt.sign({id: user._id},app.get('secret'))
+        res.send({token})
     })
 }

@@ -2,6 +2,8 @@ const express = require('express')
 
 const app = express()
 
+app.set('secret','fsadjklkjlfafdss')
+
 // 跨域
 app.use(require('cors')())
 // 解析 body
