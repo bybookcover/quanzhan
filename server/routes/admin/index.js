@@ -1,8 +1,9 @@
 module.exports = app =>{
     const express = require('express')
     const jwt = require('jsonwebtoken')
-    const assert = require('assert')
+
     const AdminUser = require('../../models/AdminUser')
+    const assert = require('http-assert')
     const router = express.Router({
         mergeParams:true
     })
@@ -21,12 +22,7 @@ module.exports = app =>{
             success: true
         })
     })  
-    router.get('/', async(req,res,next)=>{
-        const token = String(req.headers.authorization || '').split(' ').pop()
-        const { id } = jwt.verify(token, app.get('secret'))
-        req.user = await AdminUser.findById(id)
-        await next ()
-    },async(req,res)=>{
+    router.get('/', async(req,res)=>{
         const queryOptions = {}
         if(req.Model.modelName === 'Category'){
             queryOptions.populate = 'parent'
@@ -38,16 +34,16 @@ module.exports = app =>{
         const model = await req.Model.findById(req.params.id)
         res.send(model)
     })    
+    // 登录校验中间件
+    const  authMiddleware = require('../../middleware/auth')
 
-    app.use('/admin/api/rest/:resource', async(req,res,next)=>{
-        const modelName = require('inflection').classify(req.params.resource)
-        req.Model = require(`../../models/${modelName}`)
-        next()
-    }, router)
+    const resourceMiddleware = require('../../middleware/resource')
+
+    app.use('/admin/api/rest/:resource',authMiddleware(), resourceMiddleware(), router)
 
     const multer = require('multer')
     const upload = multer({dest:__dirname+'/../../uploads'})
-    app.post('/admin/api/upload',upload.single('file'),async(req,res)=>{
+    app.post('/admin/api/upload',authMiddleware(), upload.single('file'),async(req,res)=>{
         const file = req.file
         file.url= `http://localhost:3000/uploads/${file.filename}`
         res.send(file)
@@ -56,20 +52,29 @@ module.exports = app =>{
     app.post('/admin/api/login',async(req,res) =>{
         const{username,password} = req.body
         const user = await AdminUser.findOne({username}).select('+password')
-        if(!user){
-            return res.status(422).send({
-                message:'用户不存在'
-            })
-        }
+        assert(user,422,'用户不存在')
+  
+        // if(!user){
+        //     return res.status(422).send({
+        //         message:'用户不存在'
+        //     })
+        // }
         const isValid = require('bcrypt').compareSync(password,user.password)
-        if(!isValid){
-            return res.status(422).send({
-                message:'密码错误'
-            })
-        }
+        assert(isValid,422,'密码不正确')
+        // if(!isValid){
+        //     return res.status(422).send({
+        //         message:'密码错误'
+        //     })
+        // }
 
         
         token = jwt.sign({id: user._id},app.get('secret'))
         res.send({token})
+    })
+    app.use(async(err,req,res,next)=>{
+        // console.log(err)
+        res.status(err.statusCode || 500).send({
+            message: err.message
+        })
     })
 }
