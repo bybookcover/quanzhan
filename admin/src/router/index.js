@@ -23,9 +23,9 @@ import AdminUserEdit from '../views/AdminUserEdit.vue'
 import AdminUserList from '../views/AdminUserList.vue'
 Vue.use(Router)
 
-const routes = [
+const router = new Router({routes:[
   {
-    path:'/login',name:'login',component:Login
+    path:'/login',name:'login',component:Login, meta:{isPublic:true}
   },
   {
     path: '/',
@@ -116,12 +116,13 @@ const routes = [
       },
     ]
   }
-]
+]}) 
 
-const router = new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+router.beforeEach((to,from,next)=>{
+  if( !to.meta.isPublic&& !localStorage.token ){
+    return next('/login')
+  }
+  next()
 })
 
 export default router
