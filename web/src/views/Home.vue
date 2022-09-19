@@ -1,13 +1,28 @@
 <template>
   <div class="home">
     <swiper ref="mySwiper" :options="swiperOptions">
-    <swiper-slide><img class="w-100" src="../assets/images/1.jpg" alt=""></swiper-slide>
-    <swiper-slide><img class="w-100" src="../assets/images/2.jpg" alt=""></swiper-slide>
-    <swiper-slide><img class="w-100" src="../assets/images/3.jpg" alt=""></swiper-slide>
-    <swiper-slide><img class="w-100" src="../assets/images/4.jpg" alt=""></swiper-slide>
-    <swiper-slide><img class="w-100" src="../assets/images/5.jpg" alt=""></swiper-slide>
-    <div class="swiper-pagination pagination-home text-right px-4 pb-4" slot="pagination"></div>
-  </swiper>
+      <swiper-slide><img class="w-100" src="../assets/images/1.jpg" alt=""></swiper-slide>
+      <swiper-slide><img class="w-100" src="../assets/images/2.jpg" alt=""></swiper-slide>
+      <swiper-slide><img class="w-100" src="../assets/images/3.jpg" alt=""></swiper-slide>
+      <swiper-slide><img class="w-100" src="../assets/images/4.jpg" alt=""></swiper-slide>
+      <swiper-slide><img class="w-100" src="../assets/images/5.jpg" alt=""></swiper-slide>
+      <div class="swiper-pagination pagination-home text-right px-4 pb-4" slot="pagination"></div>
+    </swiper>
+    <!-- end of swiper -->
+
+    <div class="nav-icons bg-white mt-3 pt-3 text-dark-1 text-center">
+      <div class=" d-flex flex-wrap">
+        <div class="nav-item mb-3" v-for="n in 10" :key="n">
+          <i class="sprite sprite-story"></i>
+          <div class="by-2">故事站</div>
+        </div>
+      </div>
+      <div class="bg-light py-2 fs-sm d-flex text-center jc-center">
+        <i class="sprite sprite-arrow mr-2"></i>
+        <span class="fs-lg ">收起</span> 
+      </div>
+    </div>
+    <!-- end of nav icons -->
   
   </div>
 </template>
@@ -42,5 +57,19 @@ export default {
 }
 
   }
+
+  .nav-icons{
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    .nav-item{
+      width:25%;
+      border-right: 1px solid $border-color;
+      &:nth-child(4n){
+        border-right: none;
+      }
+    }
+  }
+
+
 
 </style>
