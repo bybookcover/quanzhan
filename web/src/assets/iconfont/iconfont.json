@@ -1,0 +1,135 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4110742",
+      "name": "round_menu_fill",
+      "font_class": "round_menu_fill",
+      "unicode": "e80b",
+      "unicode_decimal": 59403
+    },
+    {
+      "icon_id": "11208508",
+      "name": "23-superhero",
+      "font_class": "-superhero",
+      "unicode": "e69d",
+      "unicode_decimal": 59037
+    },
+    {
+      "icon_id": "15378446",
+      "name": "heroku",
+      "font_class": "heroku",
+      "unicode": "ebbc",
+      "unicode_decimal": 60348
+    },
+    {
+      "icon_id": "31825058",
+      "name": "菜单",
+      "font_class": "menu",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "31827878",
+      "name": "定位",
+      "font_class": "focus",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "31831622",
+      "name": "预案",
+      "font_class": "plans",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "31831701",
+      "name": "语音",
+      "font_class": "voice",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "31831803",
+      "name": "待办",
+      "font_class": "backlog",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "31833020",
+      "name": "筛选",
+      "font_class": "filter",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "31834377",
+      "name": "图片",
+      "font_class": "image",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "31834405",
+      "name": "蓝牙",
+      "font_class": "bluetooth",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "31834901",
+      "name": "查看",
+      "font_class": "check",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "31835385",
+      "name": "搜索",
+      "font_class": "search",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "31835632",
+      "name": "工具",
+      "font_class": "tool",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "31835985",
+      "name": "保存",
+      "font_class": "save",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "31836241",
+      "name": "信件-已读",
+      "font_class": "mail-read",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "31836396",
+      "name": "附件",
+      "font_class": "enclosure",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "31836397",
+      "name": "信件-未读",
+      "font_class": "mail-unread",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    }
+  ]
+}

@@ -23,8 +23,47 @@
       </div>
     </div>
     <!-- end of nav icons -->
-  
-  </div>
+    <m-card icon="round_menu_fill" title="新闻资讯">
+      <div class="card-body pt-3">
+        <div class="nav jc-between">
+          <div class="nav-item active">
+            <div class="nav-link ">热门</div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-link ">新闻</div>
+          </div> 
+          <div class="nav-item">
+            <div class="nav-link ">新闻</div>
+          </div> 
+          <div class="nav-item">
+            <div class="nav-link ">新闻</div>
+          </div> 
+          <div class="nav-item">
+            <div class="nav-link ">新闻</div>
+          </div> 
+        </div>
+        <div class="pt-3">
+          <swiper >
+            <swiper-slide v-for="m in 5" :key="m">
+              <div class="py-3" v-for="n in 5" :key="n">
+                <span>[新闻]</span>
+                <span>|</span>
+                <span>表达杰弗里啊是大家考虑反抗类毒素</span>
+                <span>06/02</span>
+              </div>
+            </swiper-slide>
+          </swiper>
+        </div>
+      </div>
+    </m-card>
+    <m-card icon="round_menu_fill" title="英雄列表"></m-card>
+    <m-card icon="round_menu_fill" title="精彩视频"></m-card>
+    <m-card icon="round_menu_fill" title="图文攻略"></m-card>
+    <m-card icon="round_menu_fill" title="英雄列表"></m-card>
+    <m-card icon="round_menu_fill" title="英雄列表"></m-card>
+
+
+</div>
 </template>
 
 <script>
