@@ -1,0 +1,14 @@
+; "builtin" config from D:\nodejs\node_modules\npm\npmrc
+
+; prefix = "C:\\Users\\Administrator\\AppData\\Roaming\\npm" ; overridden by user
+
+; "user" config from C:\Users\Administrator\.npmrc
+
+@sap:registry = "https://registry.npmjs.org/" 
+cache = "D:\\nodejs\\node_cache" 
+prefix = "D:\\nodejs\\node_global" 
+
+; node bin location = D:\nodejs\node.exe
+; cwd = D:\project\quanzhan\quanzhan\server
+; HOME = C:\Users\Administrator
+; Run `npm config ls -l` to show all defaults.

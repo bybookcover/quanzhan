@@ -11,6 +11,9 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import Card from './components/Card.vue'
 Vue.component('m-card',Card)
 
+import ListCard from './components/ListCard.vue'
+Vue.component('m-card-list',ListCard)
+
 // import style
 import 'swiper/css/swiper.css'
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)

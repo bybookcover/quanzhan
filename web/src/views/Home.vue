@@ -23,39 +23,18 @@
       </div>
     </div>
     <!-- end of nav icons -->
-    <m-card icon="round_menu_fill" title="新闻资讯">
-      <div class="card-body pt-3">
-        <div class="nav jc-between">
-          <div class="nav-item active">
-            <div class="nav-link ">热门</div>
-          </div>
-          <div class="nav-item">
-            <div class="nav-link ">新闻</div>
-          </div> 
-          <div class="nav-item">
-            <div class="nav-link ">新闻</div>
-          </div> 
-          <div class="nav-item">
-            <div class="nav-link ">新闻</div>
-          </div> 
-          <div class="nav-item">
-            <div class="nav-link ">新闻</div>
-          </div> 
+    
+    <m-card-list icon="round_menu_fill" title="新闻资讯" :categories="newsCats">
+      <template #items="{category}">
+        <div class="py-3" v-for="(news,i) in category.newsList" :key="i">
+          <span>[{{news.categoryName}}]</span>
+          <span>|</span>
+          <span>{{news.title}}</span>
+          <span>{{news.date}}</span>
         </div>
-        <div class="pt-3">
-          <swiper >
-            <swiper-slide v-for="m in 5" :key="m">
-              <div class="py-3" v-for="n in 5" :key="n">
-                <span>[新闻]</span>
-                <span>|</span>
-                <span>表达杰弗里啊是大家考虑反抗类毒素</span>
-                <span>06/02</span>
-              </div>
-            </swiper-slide>
-          </swiper>
-        </div>
-      </div>
-    </m-card>
+      </template>
+
+    </m-card-list>
     <m-card icon="round_menu_fill" title="英雄列表"></m-card>
     <m-card icon="round_menu_fill" title="精彩视频"></m-card>
     <m-card icon="round_menu_fill" title="图文攻略"></m-card>
@@ -76,7 +55,49 @@ export default {
             el: '.pagination-home'
           },
           // Some Swiper option/callback...
-        }
+        },
+        newsCats:[
+            {
+            name:'热门',
+            newsList: new Array(5).fill(true).map(v=>({
+                categoryName:'公告',
+                title:'费时间到了啊',
+                date:'06/01'            
+            }))
+          },
+          {
+            name:'新闻',
+            newsList: new Array(5).fill(true).map(v=>({
+                categoryName:'新闻',
+                title:'费时间到了啊',
+                date:'06/01'            
+            }))
+          },
+          {
+            name:'热门',
+            newsList: new Array(5).fill(true).map(v=>({
+                categoryName:'公告',
+                title:'费时间到了啊',
+                date:'06/01'            
+            }))
+          },
+          {
+            name:'公告',
+            newsList: new Array(5).fill(true).map(v=>({
+                categoryName:'公告',
+                title:'费时间到了啊',
+                date:'06/01'            
+            }))
+          },
+          {
+            name:'赛事',
+            newsList: new Array(5).fill(true).map(v=>({
+                categoryName:'公告',
+                title:'费时间到了啊',
+                date:'06/01'            
+            }))
+          },
+        ]
       }
     },
 }
