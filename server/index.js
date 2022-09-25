@@ -4,7 +4,7 @@ const app = express()
 
 app.set('secret','fsadjklkjlfafdss')
 
-// 跨域
+// 跨域a
 app.use(require('cors')())
 // 解析 body
 app.use(express.json())
