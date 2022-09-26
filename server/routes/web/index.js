@@ -100,5 +100,40 @@ module.exports = app =>{
      res.send(await Hero.find())
     })
 
+    // 英雄列表接口
+    router.get('/heroes/list',async(req,res)=>{
+      
+        const parent = await Category.findOne({
+            name:'英雄分类'
+        })
+        const cats = await Category.aggregate([
+            {$match:{parent:parent._id}},
+            {$lookup:{
+                from:'heroes',
+                localField:'_id',
+                foreignField:'categories',
+                as:'heroList'
+            }}
+             
+        ])
+        const subCats = cats.map(v=>v._id)
+        cats.unshift({
+            name:'热门',
+            newsList: await Hero.find().where({
+                categories:{$in: subCats}
+            }).populate('categories').limit(10).lean()
+        })
+
+        cats.map(cat =>{
+            cat.newsList.map(news =>{
+                news.categoryName = (cat.name ==='热门')
+                ? news.categories[0].name : cat.name
+                return news
+            })
+            return cat
+        })
+            res.send(cats)
+    })
+
     app.use('/web/api', router)
 }
